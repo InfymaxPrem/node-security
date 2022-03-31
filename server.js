@@ -2,10 +2,13 @@ const fs = require('fs')
 const https = require('https')
 const path = require('path');
 const express = require('express');
+const helmet = require('helmet')
 
 const PORT = 3000;
 
 const app = express();
+
+app.use(helmet()) // make it run before every server
 
 app.get('/secret', (req, res) => {
   return res.send('Your personal secret value is 42!')
